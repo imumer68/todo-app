@@ -1,0 +1,7 @@
+version: 1.0             # config file version
+runtime: python3         # since we're using a Python/Flask app
+build:
+  commands:              # how to install dependencies
+    - pip install --no-cache-dir -r requirements.txt
+run:
+  command: python application.py   # how to start your Flask app
