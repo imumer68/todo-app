@@ -1,0 +1,38 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    form { margin-bottom: 1rem; }
+    input { padding: 0.5rem; width: 200px; }
+    button { padding: 0.5rem; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 0.5rem 0; }
+    li + li { border-top: 1px solid #ddd; }
+    .delete-btn {
+      background: none; border: none; color: crimson;
+      cursor: pointer; font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>My To-Do List</h1>
+  <form method="post" action="/">
+    <input name="todo" placeholder="New task…" required autocomplete="off">
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    {% for id, text in todos %}
+      <li>
+        {{ text }}
+        <form method="post" action="/delete/{{ id }}" style="display:inline;">
+          <button class="delete-btn" title="Delete this item">✖</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
